@@ -1,7 +1,9 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +28,14 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
-        TextView textView = (TextView) root.findViewById(R.id.txtJoke);
-        MyClassAndroidLib myClassAndroidLib = new MyClassAndroidLib();
-        String joke = myClassAndroidLib.joke;
-        textView.setText(joke);
+//        TextView textView = (TextView) root.findViewById(R.id.txtJoke);
+//        MyClassAndroidLib myClassAndroidLib = new MyClassAndroidLib();
+//        String joke = myClassAndroidLib.joke;
+//        textView.setText(joke);
+//
+//        int t = myClassAndroidLib.c;
+//
+//        System.out.print(t);
 
 
         AdView mAdView = (AdView) root.findViewById(R.id.adView);
