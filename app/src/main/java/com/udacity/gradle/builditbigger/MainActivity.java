@@ -28,14 +28,9 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
     protected String doInBackground(Pair<Context, String>... params) {
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
-                    .setRootUrl("http://10.0.2.2:8080/_ah/api/") // 10.0.2.2 is localhost's IP address in Android emulator
-                    .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
-                        @Override
-                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
-                            abstractGoogleClientRequest.setDisableGZipContent(true);
-                        }
-                    });
+                    .setRootUrl("https://projeto-final-158219.appspot.com/_ah/api/");
             // end options for devappserver
+
 
             myApiService = builder.build();
         }
@@ -62,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
+
+
+        //new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
 
 
@@ -92,10 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
         MyClassAndroidLib myClassAndroidLib = new MyClassAndroidLib();
         String joke = myClassAndroidLib.joke;
-//        textView.setText(joke);
-//
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
-      //  Toast.makeText(this, joke, Toast.LENGTH_LONG).show();
+
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, joke));
     }
 
 
