@@ -8,6 +8,8 @@ import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.aprendizagem.projeto.mynewnewlibraryandroid.MyClassAndroidLib;
@@ -23,6 +25,21 @@ import java.io.IOException;
 class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
+    private Button button;
+    private ProgressBar loading;
+    private boolean containViews;
+
+    public EndpointsAsyncTask(Context context) {
+        this.context = context;
+        containViews = false;
+    }
+
+    public EndpointsAsyncTask(Context context, View view) {
+        this.context = context;
+        button = (Button) view.findViewById(R.id.button_joke);
+        loading = (ProgressBar) view.findViewById(R.id.progress_bar);
+        containViews = true;
+    }
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
@@ -35,11 +52,8 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
             myApiService = builder.build();
         }
 
-        context = params[0].first;
-        String name = params[0].second;
-
         try {
-            return myApiService.sayHi(name).execute().getData();
+            return myApiService.getJoke().execute().getData();
         } catch (IOException e) {
             return e.getMessage();
         }
@@ -58,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        //new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
 
 
@@ -86,11 +98,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-
-        MyClassAndroidLib myClassAndroidLib = new MyClassAndroidLib();
-        String joke = myClassAndroidLib.joke;
-
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, joke));
+        View parentView = (View) view.getParent();
+        new EndpointsAsyncTask(this, parentView).execute();
     }
 
 
