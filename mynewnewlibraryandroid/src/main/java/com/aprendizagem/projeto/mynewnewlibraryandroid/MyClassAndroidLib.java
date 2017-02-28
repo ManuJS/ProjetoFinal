@@ -16,16 +16,6 @@ public class MyClassAndroidLib extends AppCompatActivity {
 
     public final static String TAG_JOKE = "joke";
 
-//    MyClassJavaTellBadJokes myClassJavaLib = new MyClassJavaTellBadJokes();
-//
-//    public int c = myClassJavaLib.jokeArray.length;
-//
-//
-//    Random gerador = new Random();
-//
-//    int numero = gerador.nextInt(c);
-//
-//    public String joke = myClassJavaLib.jokeArray[numero];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

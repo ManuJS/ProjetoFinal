@@ -1,6 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -60,10 +62,29 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        if (containViews) {
+            button.setVisibility(View.GONE);
+            loading.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        if (context instanceof Activity) {
+            Intent intent = new Intent(context, MyClassAndroidLib.class);
+            intent.putExtra(MyClassAndroidLib.TAG_JOKE, result);
+            context.startActivity(intent);
+        }
+
+        if (containViews) {
+            button.setVisibility(View.VISIBLE);
+            loading.setVisibility(View.GONE);
+        }
     }
 }
+
 
 public class MainActivity extends AppCompatActivity {
 
