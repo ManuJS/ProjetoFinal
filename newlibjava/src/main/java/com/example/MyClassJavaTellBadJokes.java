@@ -21,6 +21,9 @@ public class MyClassJavaTellBadJokes {
                 "    Sneakers!");
     };
 
+    public static int randInt(int min, int max) {
+        return new Random().nextInt((max - min) + 1) + min;
+    }
 
     public String tellRandomJoke() {
         int max = jokeArray.size() - 1;
@@ -28,11 +31,5 @@ public class MyClassJavaTellBadJokes {
         return jokeArray.get(index);
 
     }
-
-
-    public static int randInt(int min, int max) {
-        return new Random().nextInt((max - min) + 1) + min;
-    }
-
 
 }
