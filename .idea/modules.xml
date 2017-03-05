@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/mynewnewlibraryandroid/mynewnewlibraryandroid.iml" filepath="$PROJECT_DIR$/mynewnewlibraryandroid/mynewnewlibraryandroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/newlibjava/newlibjava.iml" filepath="$PROJECT_DIR$/newlibjava/newlibjava.iml" />
-      <module fileurl="file://$PROJECT_DIR$/newlibraryandroid/newlibraryandroid.iml" filepath="$PROJECT_DIR$/newlibraryandroid/newlibraryandroid.iml" />
     </modules>
   </component>
 </project>

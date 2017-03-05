@@ -1,19 +1,14 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.appcompat.*;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
@@ -48,20 +43,19 @@ public class MainActivity extends AppCompatActivity {
 
         requestNewInterstitial();
 
-
-//        final TextView textView = (TextView) findViewById(R.id.instructions_text_view);
         Button button = (Button) findViewById(R.id.button_joke);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (BuildConfig.FLAVOR == "free") {
-                    if (mInterstitialAd.isLoaded()) {
-                        mInterstitialAd.show();
-                        tellJoke(view);
-                    }
-                }
-                else
+                if (BuildConfig.FLAVOR == "paid") {
                     tellJoke(view);
+                    }
+                else
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                    tellJoke(view);
+                }
+
             }
         });
     }
