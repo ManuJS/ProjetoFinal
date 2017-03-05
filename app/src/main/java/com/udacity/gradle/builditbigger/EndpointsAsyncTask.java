@@ -40,15 +40,11 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
-        if(myApiService == null) {  // Only do this once
+        if(myApiService == null) {
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
                     .setRootUrl("https://projeto-final-158219.appspot.com/_ah/api/");
-            // end options for devappserver
-
-
             myApiService = builder.build();
         }
-
         try {
             return myApiService.getJoke().execute().getData();
         } catch (IOException e) {

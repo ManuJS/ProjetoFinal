@@ -6,12 +6,10 @@
 
 package com.example.emanu.myapplication.backend;
 
-import com.example.MyClassJavaTellBadJokes;
+import com.example.MyClassJavaTellJokes;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-
-import javax.inject.Named;
 
 /**
  * An endpoint class we are exposing
@@ -33,7 +31,7 @@ public class MyEndpoint {
     @ApiMethod(name = "getJoke")
     public MyBean getJoke() {
         MyBean response = new MyBean();
-        response.setData(new MyClassJavaTellBadJokes().tellRandomJoke());
+        response.setData(new MyClassJavaTellJokes().tellRandomJoke());
 
         return response;
 
