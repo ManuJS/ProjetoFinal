@@ -1,1 +1,1 @@
-include ':app', ':newlibraryandroid', ':newlibjava', ':mynewnewlibraryandroid'
+include ':app', ':newlibjava', ':mynewnewlibraryandroid', ':backend'
