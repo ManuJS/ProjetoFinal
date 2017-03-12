@@ -47,10 +47,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (BuildConfig.FLAVOR == "paid") {
-                    tellJoke(view);
-                    }
-                else
+
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
                     tellJoke(view);
