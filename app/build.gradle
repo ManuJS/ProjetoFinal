@@ -23,11 +23,11 @@ android {
         free {
             applicationId "com.udacity.gradle.builditbigger.free"
             versionName "1.0-free"
+            targetSdkVersion 24
         }
         paid {
             applicationId "com.udacity.gradle.builditbigger.paid"
             versionName "1.0-paid"
-
         }
     }
 
@@ -39,13 +39,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(path: ':mynewnewlibraryandroid')
     compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.google.android.gms:play-services-ads:10.2.0'
+    freeCompile 'com.google.android.gms:play-services-ads:10.2.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
-    compile group: 'com.google.code.findbugs', name: 'jsr305', version: '2.0.1'
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
 }
